@@ -1,0 +1,16 @@
+<% @page_title = "拍手したトラック" %>
+<h1><%= @page_title %></h1>
+
+<% if @tracks.present? %>
+  <ul>
+    <% @tracks.each do |track| %>
+    <li>
+      <%= link_to track.title, track %>
+      by <%= link_to track.artist.name, [track.artist, :tracks] %>
+      - <%= link_to "削除", [:unlike, track], method: :patch, data: { confirm: "あなたの拍手を取り消しますか？"} %>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>拍手したトラックがありません。</p>
+<% end %>

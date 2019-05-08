@@ -1,0 +1,43 @@
+<% @page_title = "トラックの画像" %>
+
+<h1><%= @page_title %></h1>
+<h2><%= @track.title %></h2>
+
+<%= link_to "トラックに戻る", @track %><br>
+<%= link_to "画像の追加", [:new, @track, :image] %>
+
+<% if @images.present? %>
+  <table class="list">
+    <tread>
+      <tr>
+        <th>順番</th>
+        <th>画像</th>
+        <th>画像タイトル</th>
+        <th>操作</th>
+      </tr>
+    </tread>
+    <tbody>
+      <% @images.each_with_index do |one_image, index| %>
+        <tr>
+          <td>
+            <%= index + 1 %>番目
+          </td>
+          <td>
+            <%= image_tag one_image.image.variant(resize: "100x>"), alt: one_image.alt_text %>
+          </td>
+          <td>
+            <%= one_image.alt_text %>
+          </td>
+          <td>
+            <div>
+              <%= link_to "編集", edit_track_image_path(@track, one_image) %>
+              <%= link_to "削除", track_image_path(@track, one_image), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>画像がありません。</p>
+<% end %>

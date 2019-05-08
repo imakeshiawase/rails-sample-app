@@ -1,0 +1,18 @@
+<% if current_user %>
+  <ul class="account-menu">
+    <%= menu_link_to current_user.name, :account %>
+    <%= menu_link_to "ログアウト", :session, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+  </ul>
+<% else %>
+  <ul class="account-menu">
+    <%= menu_link_to "ログイン", :new_session %>
+  </ul>
+<% end %>
+
+<%=
+  if controller.kind_of?(Admin::Base)
+    render "parts/admin_menubar"
+  else
+    render "parts/menubar"
+  end
+%>

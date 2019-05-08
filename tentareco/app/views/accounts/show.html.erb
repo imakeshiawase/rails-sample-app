@@ -1,0 +1,9 @@
+<% @page_title = "マイアカウント" %>
+
+<h1><%= @page_title %></h1>
+<br>
+<p><%= link_to "マイアカウント情報の編集", :edit_account %></p>
+<p><%= link_to "パスワードの変更", :edit_password %></p>
+<br>
+
+<%= render "/parts/table" %>

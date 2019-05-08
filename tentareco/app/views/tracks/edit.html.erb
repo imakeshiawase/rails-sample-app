@@ -1,0 +1,9 @@
+<% @page_title = "トラックの編集" %>
+<h1><%= @page_title %></h1>
+
+<p><%= link_to "トラックの表示に戻る", @track %></p>
+
+<%= form_for @track do |parent| %>
+  <%= render "form", part: parent %>
+  <div><%= parent.submit %></div>
+<% end %>

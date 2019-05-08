@@ -1,0 +1,14 @@
+<% @page_title = @track.title + " - " + @track.artist.name + "さんのトラック" %>
+
+<h1><%= @track.artist.name %>さんのトラック</h1>
+<h2><%= @track.title %></h2>
+
+<%= the_first_image(@track) %>
+<%= simple_format(@track.body) %>
+<%= other_images(@track) %>
+
+<%= render "footer", track_footer: @track %>
+
+<% if current_user && current_user.can_clap_for?(@track) %>
+  <%= link_to "拍手する!", [:like, @track], method: :patch %>
+<% end %>

@@ -1,0 +1,16 @@
+<%= render "parts/errors", error_obj: @track %>
+
+<table class="list">
+  <tr>
+    <th width="80"><%= part.label :title %></th>
+    <td><%= part.text_field :title, size: 50 %></td>
+  </tr>
+  <tr>
+    <th><%= part.label :body %></th>
+    <td><%= part.text_area :body, rows: 10, cols: 45 %></td>
+  </tr>
+  <tr>
+    <th><%= part.label :posted_at, for: "track_posted_at_li" %></th>
+    <td><%= part.datetime_select :posted_at, start_year: 2000, end_year: Time.current.year + 1, use_month_numbers: true %></td>
+  </tr>
+</table>

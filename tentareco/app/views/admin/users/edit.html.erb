@@ -1,0 +1,12 @@
+<% @page_title = "ユーザー情報の編集" %>
+
+<h1><%= @page_title %></h1>
+
+<br>
+<p><%= link_to "ユーザーの詳細に戻る", [:admin, @user] %></p>
+<br>
+
+<%= form_for [:admin, @user] do |parent| %>
+  <%= render "parts/user_form", part: parent %>
+  <div><%= parent.submit %></div>
+<% end %>

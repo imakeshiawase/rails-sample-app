@@ -1,0 +1,8 @@
+<% @page_title = "ユーザーの詳細" %>
+
+<h1><%= @page_title %></h1>
+<br>
+<p><%= link_to "ユーザーの編集", [:edit, :admin, @user] %></p>
+<br>
+
+<%= render "parts/table" %>

@@ -1,0 +1,12 @@
+<%= render "parts/errors", error_obj: @image %>
+
+<table class="list">
+  <tr>
+    <th><%= part.label :new_image %></th>
+    <td><%= part.file_field :new_image %></td>
+  </tr>
+  <tr>
+    <th><%= part.label :alt_text %></th>
+    <td><%= part.text_field :alt_text, size: 40 %></td>
+  </tr>
+</table>

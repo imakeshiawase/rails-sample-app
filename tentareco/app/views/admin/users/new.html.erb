@@ -1,0 +1,8 @@
+<% @page_title = "ユーザーの新規登録" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for [:admin, @user] do |parent| %>
+  <%= render "parts/user_form", part: parent %>
+  <div><%= parent.submit %></div>
+<% end %>

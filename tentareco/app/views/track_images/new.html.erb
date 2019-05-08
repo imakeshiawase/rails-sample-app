@@ -1,0 +1,9 @@
+<% @page_title = "トラックへの画像追加" %>
+<h1><%= @page_title %></h1>
+<h2><%= @track.title %></h2>
+
+<% url_for_image = track_images_path(@track, @image) %>
+<%= form_for @image, as: "image", url: url_for_image do |parent| %>
+  <%= render "form", part: parent %>
+  <div><%= parent.submit %></div>
+<% end %>

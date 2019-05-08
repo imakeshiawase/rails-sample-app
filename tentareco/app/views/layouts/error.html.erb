@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charaset="utf-8">
+    <title><%= page_title %></title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+
+  <body>
+    <div id="container">
+      <header>
+        <%= render "parts/header" %>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+      <aside id="sidebar">
+        <%= render "parts/sidebar" %>
+      </aside>
+    </div>
+  </body>
+</html>

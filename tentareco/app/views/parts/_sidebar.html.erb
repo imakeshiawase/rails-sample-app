@@ -1,0 +1,16 @@
+<h2>最新の発表</h2>
+<% tracks = Track.order(posted_at: :desc).limit(5) %>
+<ul>
+  <% tracks.each do |track| %>
+    <li>
+      <%= link_to track.title, track %>
+      by <%= link_to track.artist.name, [track.artist, :tracks] %>
+    </li>
+  <% end %>
+</ul>
+<p>
+  <%= link_to "利用規約", :terms %></br>
+  <%= link_to "プライバシーポリシー", :privacy %></br>
+  <%= link_to "運営会社", :company %>
+</p>
+<p> Copyright (C) Accelerate.Corp</p>

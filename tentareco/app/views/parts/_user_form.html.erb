@@ -1,0 +1,50 @@
+<%= render "parts/errors", error_obj: @user %>
+
+<table class="list">
+  <tr>
+    <th><%= part.label :new_profile_picture %></th>
+    <td>
+      <div>
+        <%= part.file_field :new_profile_picture %>
+      </div>
+      <% if @user.profile_picture.attached? %>
+        <div>
+          <%= image_tag @user.profile_picture.variant(resize: "128x128") %>
+          <%= part.check_box :remove_profile_picture %> 
+          <%= part.label :remove_profile_picture %> 
+        </div>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= part.label :name %></th>
+    <td><%= part.text_field :name %></td>
+  </tr>
+  <tr>
+    <th><%= part.label :full_name %></th>
+    <td><%= part.text_field :full_name %></td>
+  </tr>
+  <tr>
+    <th><%= part.label :email %></th>
+    <td><%= part.text_field :email %></td>
+  </tr>
+  
+  <% if @user.new_record? %>
+    <tr>
+      <th><%= part.label :password, "パスワード" %></th>
+      <td><%= part.password_field :password %></td>
+    </tr>
+    <tr>
+    <th><%= part.label :password_confirmation, "パスワードの確認" %></th>
+    <td><%= part.password_field :password_confirmation %></td>
+  </tr>
+  <% end %>
+
+  <% if controller.kind_of?(Admin::UsersController) %>
+    <tr>
+      <th><%= part.label :administrator, disabled: !current_user.administrator? %></th>
+      <td><%= part.check_box :administrator %></td>
+    </tr>
+  <% end %>
+
+</table>

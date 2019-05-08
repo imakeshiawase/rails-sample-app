@@ -1,0 +1,18 @@
+<ul class="track-footer">
+  <% if current_user %>
+    <% if current_user == track_footer.artist %>
+      <%= menu_link_to "編集", [:edit, track_footer] %>
+      <%= menu_link_to "画像", [track_footer, :images] %>
+      <%= menu_link_to "削除", track_footer, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+  <% end %>
+  <li>
+    by <%= link_to track_footer.artist.name, [track_footer.artist, :tracks] %>
+  </li>
+  <li>
+    <%= track_footer.posted_at.strftime("%Y/%m/%d %H:%M") %>
+  </li>
+  <% if (num = track_footer.claps.count) > 0 %>
+    <li><span>♪<%= num %></span></li>
+  <% end %>
+</ul>

@@ -1,0 +1,22 @@
+<% @page_title = @user ? @user.name + "さんの発表" : "全発表" %>
+<h1><%= @page_title %></h1>
+
+<% if current_user %>
+  <p><%= link_to "トラックの作成", :new_track %></p>
+  <p><%= link_to "拍手したトラック一覧", :clapped_tracks %></p>
+<% end %>
+
+<% if @tracks.present? %>
+  <% @tracks.each do |track| %>
+    <h2><%= track.title %></h2>
+    <p>
+      <%= truncate(track.body, length: 80) %>
+      <%= link_to "もっと読む", track %>
+    </p>
+    <%= render "footer", track_footer: track %>
+  <% end %>
+<% else %>
+  <p>トラックがありません。</p>
+<% end %>
+
+

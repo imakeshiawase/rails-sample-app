@@ -1,0 +1,26 @@
+<table class="list">
+  <tr>
+    <th>プロフィール画像</th>
+    <td>
+      <% if @user.profile_picture.attached? %>
+        <%= image_tag @user.profile_picture.variant(resize: "128x128") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>ユーザー名</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+    <td><%= @user.full_name %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>管理者ですか？</th>
+    <td><%= @user.administrator? ? "Yes" : "No" %></td>
+  </tr>
+</table>

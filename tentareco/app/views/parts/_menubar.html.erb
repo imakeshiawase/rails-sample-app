@@ -1,0 +1,12 @@
+<nav class="menubar">
+  <ul>
+    <%= menu_link_to "トップ", :root %>
+    <%= menu_link_to "発表", :tracks %>
+    <% if current_user %>
+      <%= menu_link_to "マイアカウント", :account %>
+      <% if current_user.administrator? %>
+        <%= menu_link_to "管理者ページ", :admin_root %>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>
